@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import {spawnSync} from 'node:child_process';
 const root=path.resolve('dist');
 const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
-assert.match(html,/<title>Hisse Atlası<\/title>/);
+assert.match(html,/<title>Hisse Atlası — Ali İzzet KAYA<\/title>/);
 assert.match(html,/Hisse Atlası ana sayfa/);
 assert(!/file:\/\/|C:[\\/]|Users[\\/]/i.test(html),'Local path leaked');
 const catalog=JSON.parse(fs.readFileSync(path.join(root,'catalog.json'),'utf8'));
@@ -32,4 +32,18 @@ assert(js.includes("fetch('catalog.json')"),'Catalog must be relative');
 assert(!/https?:\/\/|file:\/\/|C:[\\/]/.test(js),'Host-specific app dependency');
 assert.equal(spawnSync(process.execPath,['--check',path.join(root,'app.js')]).status,0);
 assert(fs.existsSync(path.join(root,'.nojekyll')),'Missing .nojekyll');
+const manifest=JSON.parse(fs.readFileSync(path.join(root,'data/manifest.json'),'utf8'));
+assert.equal(manifest.author,'Ali İzzet KAYA');
+assert.equal(manifest.reports.length,catalog.reports.length);
+let pages=0;for(const r of manifest.reports){
+ const d=JSON.parse(fs.readFileSync(path.join(root,r.dataFile),'utf8'));
+ assert.equal(d.pages.length,r.pageCount);pages+=d.pages.length;
+ assert.equal(r.sha256,catalog.reports.find(x=>x.id===r.id).sha256);
+ for(const v of Object.values(r.kpis)){if(v.quote)assert(d.pages[0].text.replace(/\s+/g,' ').includes(v.quote.replace(/\s+/g,' ')),'Cover quote mismatch '+r.ticker);}
+ assert.equal(r.replacementCharacters,0);
+}
+assert(fs.existsSync(path.join(root,'explore/index.html')),'Explorer missing');
+assert(fs.existsSync(path.join(root,'license.html')),'License page missing');
+assert(fs.existsSync('LICENSE')&&fs.existsSync('LICENSE-CONTENT.md'));
+console.log(JSON.stringify({derivedReports:manifest.reports.length,extractedPages:pages,author:manifest.author}));
 console.log(JSON.stringify({passed:true,title:catalog.title,reports:ids.size,companies:new Set(catalog.reports.map(r=>r.ticker)).size,bytes:total,pdfHashesVerified:ids.size,relativeAssetsVerified:true}));

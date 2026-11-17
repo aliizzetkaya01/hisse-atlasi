@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {spawnSync} from 'node:child_process';
+const app=path.resolve('../hisse-atlasi-explorer');
+const existing=JSON.parse(fs.readFileSync(path.join(app,'src/data.json'),'utf8'));
+const source=JSON.parse(fs.readFileSync('../hisse-atlasi-explorer-snapshot.json','utf8'));
+source.id=existing.id;source.buildStatus='complete';
+source.queries.archive.source.metricDefinitions[0].componentIds=['historical-gap','comparison-table'];
+fs.writeFileSync(path.join(app,'src/data.json'),JSON.stringify(source));
+const builder=path.join(process.env.USERPROFILE,'.codex/plugins/cache/openai-curated-remote/data-analytics/1.0.11/scripts/data-app.mjs');
+const result=spawnSync(process.execPath,[builder,'build','--project-dir',app,'--separate-data'],{stdio:'inherit'});
+if(result.status!==0)process.exit(result.status||1);
+fs.mkdirSync('dist/explore',{recursive:true});
+fs.cpSync(path.join(app,'dist'),'dist/explore',{recursive:true});

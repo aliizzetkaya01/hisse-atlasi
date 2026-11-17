@@ -2,7 +2,18 @@
 
 Türkçe şirket araştırmaları ve tarihli PDF arşivi. Hisse Araştırma Kütüphanesi.
 
-Canlı GitHub Pages adresi yayın tamamlandığında deponun Pages bölümünde görünür.
+Canlı site: https://aliizzetkaya01.github.io/hisse-atlasi/
+
+Araştırma arşivi sahibi: **Ali İzzet KAYA**.
+
+Veri laboratuvarı: https://aliizzetkaya01.github.io/hisse-atlasi/explore/
+
+96 PDF'nin 2.603 sayfası aranabilir metin ve sayfa/bölüm dizinine çevrilmiştir.
+Şirket, sektör ve tarih filtreleri; rapor içi arama, kaynak sayfası bağlantısı,
+JSON/CSV indirme ve en fazla beş raporun kapak göstergelerini karşılaştırma vardır.
+10.111 otomatik tablo-adayı satır, denetlenmiş/normalize edilmiş mali seri değildir.
+Resim grafikler sayısallaştırılmamıştır. Eksik veya kurulamadı alanlar null tutulur.
+Fiyat ve hedefler tarihlidir; hedef/spot farkı gerçekleşmiş getiri değildir.
 İlk otomatik yayın eksik PDF'leri mevcut herkese açık arşivden indirir, her birinin
 SHA-256 değerini katalogla karşılaştırır ve bu depoya kaydeder. Sonraki yayınlar
 PDF'ler depoda bulunduğu sürece önceki yayın alanına bağımlı değildir.
@@ -51,8 +62,9 @@ Katalogdaki `sha256` ve `bytes`, PDF bütünlüğünü doğrulamaya yarar.
 
 ## Haklar ve kapsam
 
-Bu depo kaynak kodu ve araştırma arşivini yayınlar. Genel bir yeniden kullanım
-lisansı verilmemiştir. PDF'lerde anılan üçüncü taraf kaynakların hakları saklıdır.
+Özgün yazılım kodu [MIT](LICENSE), özgün rapor ve analizler
+[CC BY-NC 4.0](LICENSE-CONTENT.md) kapsamındadır. Üçüncü taraf kaynakların
+hakları saklıdır; salt olgular üzerinde yeni bir telif hakkı ileri sürülmez.
 Geçmiş raporlar yayın için yeniden finansal denetime tabi tutulmamıştır.
 
 Resmî kurulum açıklaması:
