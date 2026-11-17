@@ -1,0 +1,97 @@
+﻿id,ticker,company,date,sector,market,type,pageCount,textPages,tableRows,sha256,file
+412d4bfb4868436a,CEVA,Ceva,2026-11-17,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,59,59,188,412d4bfb4868436addcd02f5f8690698353f1b1322fecd4b3e94473cdbe06645,reports/412d4bfb4868436a.pdf
+3b76bf5a4a1befe0,SITM,SiTime,2026-11-15,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,64,64,222,3b76bf5a4a1befe05c8f5480ca4e7161a6f092bb4dadf752bdca8ea2d2756307,reports/3b76bf5a4a1befe0.pdf
+88221b6a5f0ca8d9,OLED,Universal Display,2026-11-14,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,56,56,251,88221b6a5f0ca8d9f1a75939f3e1c5c1f22d0c6dbd9dc38b3fa6b5c7283fd165,reports/88221b6a5f0ca8d9.pdf
+70240e85077b7823,MXL,MaxLinear,2026-11-13,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,56,56,216,70240e85077b78235396f9eda1a30c96552c455a4aec6f3d83eff404a8b724b5,reports/70240e85077b7823.pdf
+ca35425554afc9e4,ALAB,Astera Labs,2026-11-11,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,54,54,164,ca35425554afc9e427ef5d26d1bbbb07ed57696127a655ea059a68109088d448,reports/ca35425554afc9e4.pdf
+821e805e0bd059f7,AMBA,Ambarella,2026-11-05,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,41,41,219,821e805e0bd059f7568b38b89c0692f7806c6f88438efa3e4fd2dcc9e2e3fb7b,reports/821e805e0bd059f7.pdf
+cffeb95f0e297c92,CRDO,Credo Technology,2026-11-01,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,61,61,256,cffeb95f0e297c92249a96b8c94abcd6a93694857a774362a7d481572dc15ae5,reports/cffeb95f0e297c92.pdf
+129ad31b8127b146,HIMX,Himax Technologies,2026-10-31,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,47,47,224,129ad31b8127b14618caa3f7d548bdaa99c77aac3390ca282eca88760c66ecb3,reports/129ad31b8127b146.pdf
+82acbd20cbd1d97c,SIMO,Silicon Motion,2026-10-29,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,50,50,167,82acbd20cbd1d97c0134b2e7e7108ad0c1e2d9b55fd4dea94a35fd45ccefcda8,reports/82acbd20cbd1d97c.pdf
+a8a8bd90d236749e,SKHY,SK hynix,2026-10-28,Yarı iletken & IP,Diğer borsa,Bilanço sonrası,64,64,171,a8a8bd90d236749e800d8ef49ee49d1644a66aefa6706b7600690b539a38e865,reports/a8a8bd90d236749e.pdf
+1e23d177b63362a7,COHU,Cohu,2026-10-27,Ekipman & malzeme,NASDAQ / ABD,Tam rapor,45,45,163,1e23d177b63362a7309e527b54858c58086f65822ab6f23b022ec3376a872300,reports/1e23d177b63362a7.pdf
+267d762627fa6170,KLIC,Kulicke & Soffa,2026-10-26,Ekipman & malzeme,NASDAQ / ABD,Tam rapor,55,55,219,267d762627fa6170280242e3567cbcf9ce1d2f292e799c7b126ced483358894a,reports/267d762627fa6170.pdf
+cc12e5e5bba911cf,PLAB,Photronics,2026-10-25,Ekipman & malzeme,NASDAQ / ABD,Tam rapor,52,52,196,cc12e5e5bba911cf769aecaffa102ccac636626690c2e281bac6990fdf4e78b1,reports/cc12e5e5bba911cf.pdf
+4efa8caad8ad0303,UCTT,Ultra Clean Holdings,2026-10-23,Ekipman & malzeme,NASDAQ / ABD,Tam rapor,60,60,201,4efa8caad8ad03036e3abc9a7a64c5bee4c89db881c0c2aef88efd1b53c84af8,reports/4efa8caad8ad0303.pdf
+a821bf54ecbb7129,ICHR,Ichor Holdings,2026-10-21,Ekipman & malzeme,NASDAQ / ABD,Tam rapor,53,53,211,a821bf54ecbb71291b5f0a6a77e07ebf215e280e6eaca13840173b5f5dc0c4fb,reports/a821bf54ecbb7129.pdf
+075b2a2d6c68830c,ASELS,Aselsan,2026-10-18,Savunma,BIST,Özel araştırma,49,49,122,075b2a2d6c68830ce9e338e31865f7c7ab3985c34584859959997d7c987a827a,reports/075b2a2d6c68830c.pdf
+a9ac7420c1edca6c,TSEM,Tower Semiconductor,2026-10-18,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,54,54,197,a9ac7420c1edca6c7c5d6f401a4c0b52bc317b068870ff2355eb1ac0d3cc67e0,reports/a9ac7420c1edca6c.pdf
+647ec8d47384f6a5,ALGM,Allegro MicroSystems,2026-10-17,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,64,64,248,647ec8d47384f6a5f9d5de65229c7bdb11f3fe20af26ffc78b5475549b36fd75,reports/647ec8d47384f6a5.pdf
+d5400e688cb76140,CAMT,Camtek,2026-10-16,Ekipman & malzeme,NASDAQ / ABD,Tam rapor,44,44,158,d5400e688cb7614056dd1edbfd711c3d85f1a51bb64453ce4ae34287bc0a0ea5,reports/d5400e688cb76140.pdf
+52ce36032b9b0459,POWI,Power Integrations,2026-10-15,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,53,53,240,52ce36032b9b045986adc7eee333e3037b589207bdc65ccc705a61b5a75da0bc,reports/52ce36032b9b0459.pdf
+ae0daccdce5bb60d,MCD,McDonald’s,2026-10-14,Tüketim & diğer,NASDAQ / ABD,Tam rapor,45,45,171,ae0daccdce5bb60df2355f97052391064e8f90d5bbfdf274558864ecea4b2605,reports/ae0daccdce5bb60d.pdf
+aa51f2de2c23d58a,DIOD,Diodes Incorporated,2026-10-12,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,48,48,191,aa51f2de2c23d58ac7157baa70af51fc119861709d787ab6d2f75bdcd945d43b,reports/aa51f2de2c23d58a.pdf
+bba07a82cb8f8f3b,ACLS,Axcelis Technologies,2026-10-11,Ekipman & malzeme,NASDAQ / ABD,Tam rapor,48,48,176,bba07a82cb8f8f3b7161766aef020a96ba1520e89d72ae34532cbf97e78b80c3,reports/bba07a82cb8f8f3b.pdf
+c79be5c08a26eb3e,FORM,FormFactor,2026-10-10,Ekipman & malzeme,NASDAQ / ABD,Tam rapor,40,40,169,c79be5c08a26eb3e01528bcd194efa8548b78a44719ca1e82dcd3ec972f49bea,reports/c79be5c08a26eb3e.pdf
+585169d64f15189b,MPARK,MLP Sağlık,2026-10-10,Sağlık,BIST,Tam rapor,46,46,181,585169d64f15189ba05944425195e365f11ad3edca55a0e48dcb9650b967032e,reports/585169d64f15189b.pdf
+228969bff56035b6,AEIS,Advanced Energy Industries,2026-10-09,Güç & altyapı,NASDAQ / ABD,Tam rapor,42,42,162,228969bff56035b66f1e4b3683b347c5f84da33627bae7ac5791cecb019a72aa,reports/228969bff56035b6.pdf
+402b3df5953a1ebf,NVMI,Nova,2026-10-08,Ekipman & malzeme,NASDAQ / ABD,Tam rapor,61,61,225,402b3df5953a1ebf0b1244962d848a8cc286eba0ffbd958384432880f1cd6648,reports/402b3df5953a1ebf.pdf
+c0d0f6e5a3ff815a,MKSI,MKS Instruments,2026-10-06,Ekipman & malzeme,NASDAQ / ABD,Tam rapor,47,47,180,c0d0f6e5a3ff815a670f4507b261deaa418c9a01122fc55b0058f16b41bfef86,reports/c0d0f6e5a3ff815a.pdf
+32aedf900f40ad64,ENTG,Entegris,2026-10-05,Ekipman & malzeme,NASDAQ / ABD,Tam rapor,44,44,204,32aedf900f40ad64859bf7887bfdb504bf3fbc40717f8e68679ebabf8cd7b3d0,reports/32aedf900f40ad64.pdf
+8a61eea541cd1c47,SMTC,Semtech,2026-10-04,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,42,42,182,8a61eea541cd1c477dff3fa7a308585347019251586af1ddcd6a309e08a3a14b,reports/8a61eea541cd1c47.pdf
+955ff1440495ab19,CRUS,Cirrus Logic,2026-10-03,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,29,29,98,955ff1440495ab19f8f9b9a7806d41ead795bbd93d93ae70002cf0457402be6e,reports/955ff1440495ab19.pdf
+dd75878f23ffea06,MTSI,MACOM Technology Solutions,2026-10-01,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,29,29,139,dd75878f23ffea060169169e14bbeca1fc83c8065e4a824c0ce534bd171b31a9,reports/dd75878f23ffea06.pdf
+85bd6a00254e7fbf,LAES,SEALSQ,2026-09-29,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,20,20,92,85bd6a00254e7fbf90900d400ccf55f9bf27b1de541ab402ff0d3302aed9dda1,reports/85bd6a00254e7fbf.pdf
+fb0fdcde7109cd4b,MDLZ,Mondelez International,2026-09-28,Tüketim & diğer,NASDAQ / ABD,Tam rapor,19,19,84,fb0fdcde7109cd4b7e1f04115e1e3435bf01bfc5b344e2d2da81ae15757f1327,reports/fb0fdcde7109cd4b.pdf
+8526b704c57b19e4,PYPL,PayPal,2026-09-27,Finansal teknoloji,NASDAQ / ABD,Tam rapor,20,20,62,8526b704c57b19e48beaac8a6fce8698d94de10b6c73325b928001843b0bf030,reports/8526b704c57b19e4.pdf
+24bda6545f69f9f6,CHKP,Check Point Software,2026-09-26,Yazılım & güvenlik,NASDAQ / ABD,Tam rapor,23,23,65,24bda6545f69f9f6e0a3242e9abe1ac803163504dccffdf2342541c0dd9ed0a7,reports/24bda6545f69f9f6.pdf
+b065ee3043bfe6e3,CHKP,Check Point Software,2026-09-26,Yazılım & güvenlik,NASDAQ / ABD,Karar özeti,1,1,5,b065ee3043bfe6e3f3e543a68397be9b9cd9f02e8c68556d538a8bd629156e3a,reports/b065ee3043bfe6e3.pdf
+d65efda54d1719d2,FTNT,Fortinet,2026-09-25,Yazılım & güvenlik,NASDAQ / ABD,Tam rapor,24,24,98,d65efda54d1719d2435422238fb5fc1e188b029db42a08617d9f9471dc1b4aa6,reports/d65efda54d1719d2.pdf
+575867e4e621b243,RMBS,Rambus,2026-09-24,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,25,25,71,575867e4e621b24396c4781823a3f8b84c4c005c81751a67587059acc6a625ea,reports/575867e4e621b243.pdf
+7e05369d87e7c1c2,RMBS,Rambus,2026-09-24,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,27,27,77,7e05369d87e7c1c2b9e375d7c979a99c47f1150c4936ac2f66a3f954d7bebffd,reports/7e05369d87e7c1c2.pdf
+644d20c12e2fa280,AMKR,Amkor Technology,2026-09-23,Ekipman & malzeme,NASDAQ / ABD,Tam rapor,18,18,60,644d20c12e2fa280c4b4ec49c60e5928af97895677a2700a14ac3b59f8c1e7c5,reports/644d20c12e2fa280.pdf
+8689952042b78fc4,QRVO,Qorvo,2026-09-22,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,18,18,64,8689952042b78fc4fb5291e534381dd60234ccf2e04be6fb2742679e17d672a1,reports/8689952042b78fc4.pdf
+22c72ab821ae64b2,CLMT,Calumet,2026-09-20,Tüketim & diğer,NASDAQ / ABD,Özel araştırma,17,17,61,22c72ab821ae64b2ac529c1f5792a9dc40018ee85dcee9315b7688ac6c8fa349,reports/22c72ab821ae64b2.pdf
+7800e9f9d1a40ca0,LSCC,Lattice Semiconductor,2026-09-20,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,17,17,52,7800e9f9d1a40ca07203d8383589123dfdcccf49ebfbbaa3b75fc922d9544d50,reports/7800e9f9d1a40ca0.pdf
+6cf11a8ddc48b9d4,SWKS,Skyworks Solutions,2026-09-19,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,18,18,59,6cf11a8ddc48b9d42ed742ef481bd8d6ce3ac385d6522d84a973463711a324aa,reports/6cf11a8ddc48b9d4.pdf
+c801598c02d63e11,SNPS,Synopsys,2026-09-18,Yazılım & güvenlik,NASDAQ / ABD,Tam rapor,18,18,72,c801598c02d63e11aea5890f1d32592318b95000599c72833a2a77398d8f618a,reports/c801598c02d63e11.pdf
+59191776b27b296f,CDNS,Cadence Design Systems,2026-09-17,Yazılım & güvenlik,NASDAQ / ABD,Tam rapor,20,20,84,59191776b27b296f5ccce68389545f59f542978252e7f4c9e416cc19a14d968a,reports/59191776b27b296f.pdf
+07674d80cc7d5c57,ARM,Arm Holdings,2026-09-16,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,20,20,85,07674d80cc7d5c5765f91f6710591151c065379eb50b9935ec1423a634e20cf3,reports/07674d80cc7d5c57.pdf
+f036311b9ef46065,AVGO,Broadcom,2026-09-14,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,20,20,94,f036311b9ef460659feaca7e81801b5c449515ddc2da1d4a3661a39de64c24f9,reports/f036311b9ef46065.pdf
+e6fae1bca82be84a,AVGO,Broadcom,2026-09-12,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,20,20,94,e6fae1bca82be84aa06ce7cb98cc272753e144789a517d2c0fcf46cec3c6d76f,reports/e6fae1bca82be84a.pdf
+685fb5b11b938e9a,GFS,GlobalFoundries,2026-09-11,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,21,21,68,685fb5b11b938e9a1424bce8ab4dd879c45972a75199c47a9a2b51a41f3d029e,reports/685fb5b11b938e9a.pdf
+f024ad656c432514,ASML,ASML Holding,2026-09-10,Ekipman & malzeme,NASDAQ / ABD,Tam rapor,20,20,60,f024ad656c432514a72a1cbf169dc16c6625c07c2e6c47e3f08e6b862a9d4f8d,reports/f024ad656c432514.pdf
+c8fce3492c258a0c,ASML,ASML Holding,2026-09-10,Ekipman & malzeme,NASDAQ / ABD,Tam rapor,20,20,57,c8fce3492c258a0ccee3b6a46e73627248cec6b584bd35bad1699e6663e45372,reports/c8fce3492c258a0c.pdf
+42636cfe95b6de7f,INTC,Intel,2026-09-09,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,20,20,28,42636cfe95b6de7fa8f45ef490d3c112b627320814cc7916c5ce80054e863482,reports/42636cfe95b6de7f.pdf
+5fae24ce986202d2,TER,Teradyne,2026-09-08,Ekipman & malzeme,NASDAQ / ABD,Tam rapor,20,20,30,5fae24ce986202d268a63091a4e683c658ab4fd88b6d947e171fa3c5cd704ffe,reports/5fae24ce986202d2.pdf
+7fac96c02d81d53b,MCHP,Microchip Technology,2026-09-06,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,20,20,21,7fac96c02d81d53bbf34d203d41610ddf4b68c1abf28fc2e4d826caba370df68,reports/7fac96c02d81d53b.pdf
+a3d255ed85759c72,ON,onsemi,2026-09-05,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,26,26,28,a3d255ed85759c7218834a4f5e824d89a473c5785fe5d503ef6c966e3852d846,reports/a3d255ed85759c72.pdf
+62324c4f90097c2e,MPWR,Monolithic Power Systems,2026-09-04,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,19,19,47,62324c4f90097c2ec713f2473bef64f7eadb8fe779663fe8e8a988f4f4ea6a2a,reports/62324c4f90097c2e.pdf
+23a1063ae1f0519b,NXPI,NXP Semiconductors,2026-09-03,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,22,22,47,23a1063ae1f0519bab5039f3f10a245da2ece103028ab4bd40fa9b5feed59589,reports/23a1063ae1f0519b.pdf
+ba44fefcdfd84663,MRVL,Marvell Technology,2026-09-02,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,21,21,47,ba44fefcdfd84663e44dc991366ef971b66d47cb3cf16fb82d68f20eeadc2e72,reports/ba44fefcdfd84663.pdf
+b01db4974eb3a44e,LRCX,Lam Research,2026-09-01,Ekipman & malzeme,NASDAQ / ABD,Tam rapor,17,17,41,b01db4974eb3a44e2b044aadea48204a650e1c0df17a7492cde935340ce9242d,reports/b01db4974eb3a44e.pdf
+a767de8f2b83d96e,KLAC,KLA Corporation,2026-08-31,Ekipman & malzeme,NASDAQ / ABD,Tam rapor,15,15,59,a767de8f2b83d96efd6a6c0fa7c8bf8fb015dab9ec6a89d378022b019744e424,reports/a767de8f2b83d96e.pdf
+acfb5fe081853ea5,AMAT,Applied Materials,2026-08-30,Ekipman & malzeme,NASDAQ / ABD,Tam rapor,15,15,72,acfb5fe081853ea52135726187e490af0948ef0d4ad29282c026002d3563a0ca,reports/acfb5fe081853ea5.pdf
+9b1037b4b9e445ec,ADI,Analog Devices,2026-08-29,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,17,17,74,9b1037b4b9e445ec9eb5b6fcaf0993299518633dc1052d70cd20550edbba02a5,reports/9b1037b4b9e445ec.pdf
+85d8a9b0ac0e56d3,MU,Micron Technology,2026-08-29,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,19,19,100,85d8a9b0ac0e56d36053f8cdb69abedf7e723cab82f3d15838723be168073998,reports/85d8a9b0ac0e56d3.pdf
+fe888a1cf0033ce8,NVDA,NVIDIA,2026-08-28,Yarı iletken & IP,NASDAQ / ABD,Bilanço sonrası,19,19,81,fe888a1cf0033ce8512b6063f0e926f02934cbdffa8e3109f3406878711b28af,reports/fe888a1cf0033ce8.pdf
+e69d06077a31b15f,NVDA,NVIDIA,2026-08-27,Yarı iletken & IP,NASDAQ / ABD,Bilanço sonrası,17,17,65,e69d06077a31b15fcccdba7e8586119fc8166d2ec24972f7a6712a391da97a91,reports/e69d06077a31b15f.pdf
+b28aec31448b198b,ADP,Automatic Data Processing,2026-08-26,Yazılım & güvenlik,NASDAQ / ABD,Tam rapor,14,14,50,b28aec31448b198bc09ebe195df94aa027a51f2435de5a6a4806b0c30c8ed824,reports/b28aec31448b198b.pdf
+482ab148a56f22fe,ISRG,Intuitive Surgical,2026-08-25,Sağlık,NASDAQ / ABD,Tam rapor,14,14,66,482ab148a56f22fe573352445b7fcf2d847eff17ad426403b61af7938b44175b,reports/482ab148a56f22fe.pdf
+1ce0f5973dd5495d,GILD,Gilead Sciences,2026-08-24,Sağlık,NASDAQ / ABD,Tam rapor,12,12,59,1ce0f5973dd5495d5dc52e19b845d6907e85a8c2d788572befe19fa9b536bcdc,reports/1ce0f5973dd5495d.pdf
+3e828e01f83f9061,CMCSA,Comcast,2026-08-23,İnternet & medya,NASDAQ / ABD,Tam rapor,11,11,47,3e828e01f83f90618c1a851829f46aa99b0f0dcdf2cbe5294985e9961b325659,reports/3e828e01f83f9061.pdf
+6dfdf1d6b753e247,PANW,Palo Alto Networks,2026-08-22,Yazılım & güvenlik,NASDAQ / ABD,Tam rapor,15,15,95,6dfdf1d6b753e24762a18e071005d506069ba646e8a63f79dc71d869671b8409,reports/6dfdf1d6b753e247.pdf
+c58ec32673ab14f5,TXN,Texas Instruments,2026-08-21,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,14,14,49,c58ec32673ab14f55e5cf92be0523c95bc26a57fe2d59080f207154f0033b6fe,reports/c58ec32673ab14f5.pdf
+2c96f48847e82881,SKHY,SK hynix,2026-08-19,Yarı iletken & IP,Diğer borsa,Tam rapor,14,14,78,2c96f48847e82881a8cf3960017c910e74e4c0009b2a3e0654c50657a84abab1,reports/2c96f48847e82881.pdf
+ee9cd1f3be47b98c,MU,Micron Technology,2026-08-18,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,14,14,65,ee9cd1f3be47b98c26f6675a512c45e83386209585b546fa3b7a05d956a90cb8,reports/ee9cd1f3be47b98c.pdf
+9f1aed230d81b51b,PYPL,PayPal,2026-08-17,Finansal teknoloji,NASDAQ / ABD,Tam rapor,13,13,44,9f1aed230d81b51b471c09022e448ce695d3fc8501a6b13e2ea313f0dc090b17,reports/9f1aed230d81b51b.pdf
+8d9d8ca8e04de539,INTU,Intuit,2026-08-16,Yazılım & güvenlik,NASDAQ / ABD,Tam rapor,13,13,45,8d9d8ca8e04de5395420862f5b61e1e2ccb96a871109ef96c4d62fe398aa69c0,reports/8d9d8ca8e04de539.pdf
+3c953d4ab5078002,SBUX,Starbucks,2026-08-15,Tüketim & diğer,NASDAQ / ABD,Tam rapor,13,13,54,3c953d4ab507800297f632148a9b7608972acf5afa6e8deb637bfb109a802c27,reports/3c953d4ab5078002.pdf
+cffd97b66d9b8f3e,BKNG,Booking Holdings,2026-08-14,E-ticaret & seyahat,NASDAQ / ABD,Tam rapor,12,12,69,cffd97b66d9b8f3ed0f739550a24345dc34a6f3bbd6c272253dc3c5ee8376eec,reports/cffd97b66d9b8f3e.pdf
+61d2f8862fc8b704,PEP,PepsiCo,2026-08-14,Tüketim & diğer,NASDAQ / ABD,Tam rapor,12,12,59,61d2f8862fc8b70418f0a232d4228180885290775956052feced252115775a6a,reports/61d2f8862fc8b704.pdf
+a3d55c7fb8097911,NFLX,Netflix,2026-08-12,İnternet & medya,NASDAQ / ABD,Tam rapor,10,10,34,a3d55c7fb80979114a8046c2f2841d3c507e1dbf8d3dc90be8bbe249e4ec34a3,reports/a3d55c7fb8097911.pdf
+e11e9bd0b99d5b06,ADBE,Adobe,2026-08-11,Yazılım & güvenlik,NASDAQ / ABD,Tam rapor,10,10,71,e11e9bd0b99d5b06189e75a40cc4a4b2e84ae827f5f901777519e9d06d8f99ab,reports/e11e9bd0b99d5b06.pdf
+c0f2288fe1d4e0ea,COST,Costco Wholesale,2026-08-10,Tüketim & diğer,NASDAQ / ABD,Tam rapor,10,10,67,c0f2288fe1d4e0ead35d230d04a647e92b52f05ad33f1e3aba8ec846ad38fffc,reports/c0f2288fe1d4e0ea.pdf
+63c069c514b3543a,CSCO,Cisco Systems,2026-08-09,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,10,10,66,63c069c514b3543aeb51472f23cbd36cdcc287000d8c24b588a6b09667f8758e,reports/63c069c514b3543a.pdf
+22dffec3335690bf,QCOM,Qualcomm,2026-08-08,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,10,10,79,22dffec3335690bfade65c1145882b4ea8854e943d7095c6296026963c1e6232,reports/22dffec3335690bf.pdf
+ed8a902650aad1b3,APP,AppLovin,2026-08-07,İnternet & medya,NASDAQ / ABD,Tam rapor,10,10,49,ed8a902650aad1b39258210fa2f073581fe49898b984733ec0e9287925dd014b,reports/ed8a902650aad1b3.pdf
+e666e8b753d39e31,MELI,MercadoLibre,2026-08-06,E-ticaret & seyahat,NASDAQ / ABD,Tam rapor,10,10,31,e666e8b753d39e31dc977978b5c41127f42432d3f58d81776abb63d97f8ef56c,reports/e666e8b753d39e31.pdf
+eebc1b0dbf1e726a,AMD,Advanced Micro Devices,2026-08-05,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,10,10,55,eebc1b0dbf1e726add47021884fa3d73c3c3de2be6d65f418397e8eee720b2cd,reports/eebc1b0dbf1e726a.pdf
+d10ea715a3cbf283,AVGO,Broadcom,2026-08-04,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,10,10,64,d10ea715a3cbf2839541d5dea791ce80af11d0234502bf0c1294f7c0aa403572,reports/d10ea715a3cbf283.pdf
+a95cc21c1487b502,NVDA,NVIDIA,2026-08-03,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,10,10,66,a95cc21c1487b502bf42e8397148718774e6b3b82b0f72d493b5dda24f1fcf8c,reports/a95cc21c1487b502.pdf
+ee225b09cbd47a5a,TSLA,Tesla,2026-08-02,Donanım & otomotiv,NASDAQ / ABD,Tam rapor,10,10,63,ee225b09cbd47a5a3ecf88d1a1f4917674fdf073c774fadcfe0ad53d661252ad,reports/ee225b09cbd47a5a.pdf
+e3abe3e1327831ac,AMZN,Amazon,2026-08-01,E-ticaret & seyahat,NASDAQ / ABD,Tam rapor,10,10,81,e3abe3e1327831ac0e05ee82853235fab5edaba9a843e5b1d1a088527e9d1e47,reports/e3abe3e1327831ac.pdf
+3c15efeb85a8d420,AAPL,Apple,2026-07-31,Donanım & otomotiv,NASDAQ / ABD,Tam rapor,10,10,88,3c15efeb85a8d4200bd892abbd1d7768259c1a5338c7020d847002e73c363e96,reports/3c15efeb85a8d420.pdf
+ee3c8e942be72729,META,Meta Platforms,2026-07-30,İnternet & medya,NASDAQ / ABD,Tam rapor,11,11,87,ee3c8e942be727297e44344f05a6f5736855e84e18681ecaf95829ac18d51170,reports/ee3c8e942be72729.pdf
+6c5348f18ae4fbae,GOOGL,Alphabet,2026-07-29,İnternet & medya,NASDAQ / ABD,Tam rapor,8,8,81,6c5348f18ae4fbaec9a57c9230f5c42596e0679b011fd5040b8981c62b621036,reports/6c5348f18ae4fbae.pdf
+24b8f8ea877cdb34,MSFT,Microsoft,2026-07-29,Yazılım & güvenlik,NASDAQ / ABD,Tam rapor,8,8,34,24b8f8ea877cdb343426366220e85d35949e7b846e581dd5ef68c7976918bd9b,reports/24b8f8ea877cdb34.pdf
