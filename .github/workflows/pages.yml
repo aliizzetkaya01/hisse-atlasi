@@ -15,22 +15,11 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      - name: Import missing PDFs with source hashes
-        run: node scripts/import-pdfs.mjs
       - name: Validate archive and relative links
         run: node scripts/validate-site.mjs
-      - name: Preserve imported PDFs in this repository
-        run: |
-          git add dist/reports
-          if ! git diff --cached --quiet; then
-            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Archive verified research PDFs'
-            git push origin HEAD:main
-          fi
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload static site
@@ -50,3 +39,4 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
+
