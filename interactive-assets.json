@@ -1,5 +1,10 @@
 {
   "version": 1,
+  "bundle": {
+    "path": "interactive-assets.bin",
+    "bytes": 6908883,
+    "sha256": "06249c05d4d625694491bf12a81484bcb816f24c52c7b5fda29b3b0a676538ff"
+  },
   "assets": [
     {
       "path": "dist/app.js",
@@ -54,12 +59,12 @@
     {
       "path": "dist/explore/data-app-build.json",
       "bytes": 593,
-      "sha256": "7d8039377b083c56521e4499dca35bf59001a22da0c63f6a0432c4a710040585"
+      "sha256": "7927a653fbf363f9505b53ec55258b2f17f1acafc9d12a7e6ee42160755df67a"
     },
     {
       "path": "dist/explore/index.html",
-      "bytes": 2855320,
-      "sha256": "df142813e12790dd3a88e76b142402398ebd2f2e42d282c8d8022c078e109066"
+      "bytes": 2855371,
+      "sha256": "e5b0521c40436a74246a1be4f480f7fac80d95934840e3c6ba87041ff1f11ae6"
     },
     {
       "path": "dist/explore/snapshot.181be60f297001fa2065b12ea5cbc68e9076416c0bf66952d5e69297ba3c2e16.json",
