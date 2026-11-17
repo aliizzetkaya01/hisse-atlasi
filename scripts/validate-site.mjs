@@ -43,6 +43,14 @@ let pages=0;for(const r of manifest.reports){
  assert.equal(r.replacementCharacters,0);
 }
 assert(fs.existsSync(path.join(root,'explore/index.html')),'Explorer missing');
+const search=JSON.parse(fs.readFileSync(path.join(root,'data/search-index.json'),'utf8'));
+assert.equal(search.length,manifest.reports.length);
+for(const r of manifest.reports)assert(search.find(x=>x.id===r.id)?.text.length>100,'Missing searchable text');
+const check=(ticker,date,spot,target)=>{const r=manifest.reports.find(x=>x.ticker===ticker&&x.date===date);assert(r,'Regression source missing');assert.equal(r.kpis.spot?.value,spot);assert.equal(r.kpis.target?.value,target);};
+check('CEVA','2026-11-17',24.91,null);
+check('SITM','2026-11-15',444.54,365);
+check('OLED','2026-11-14',89.29,120);
+check('ON','2026-09-05',74.38,85);
 assert(fs.existsSync(path.join(root,'license.html')),'License page missing');
 assert(fs.existsSync('LICENSE')&&fs.existsSync('LICENSE-CONTENT.md'));
 console.log(JSON.stringify({derivedReports:manifest.reports.length,extractedPages:pages,author:manifest.author}));
