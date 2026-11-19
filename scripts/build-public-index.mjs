@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+const {reports,catalogDate}=JSON.parse(fs.readFileSync('dist/catalog.json','utf8'));
+const series=JSON.parse(fs.readFileSync('dist/data/financial-series.json','utf8'));
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const date=x=>new Intl.DateTimeFormat('tr-TR',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(x+'T12:00:00Z'));
+let html=fs.readFileSync('dist/index.html','utf8');
+const set=(id,value)=>{const re=new RegExp('(<[^>]+ id="'+id+'"[^>]*>)[^<]*(</[^>]+>)');html=html.replace(re,(_,a,b)=>a+esc(value)+b);};
+const companies=new Set(reports.map(r=>r.ticker)).size;
+set('report-count',reports.length);set('company-count',companies);set('latest-date',date(reports[0].date));
+set('catalog-date','Katalog: '+date(catalogDate));set('result-count',reports.length+' belge · '+companies+' şirket');
+const cards=reports.map(r=>`<article class="card"><div class="card-top"><span class="ticker">${esc(r.ticker)}</span><time datetime="${esc(r.date)}">${date(r.date)}</time></div><div class="card-body"><h3>${esc(r.company)}</h3><p>${esc(r.sector)}</p></div><div class="card-bottom"><a href="${esc(r.file)}">PDF</a><a href="explore/?report=${esc(r.id)}">Veri</a></div></article>`).join('\n');
+html=html.replace(/(<div id="cards" class="cards">)[\s\S]*?(<\/div><div id="empty")/,(_,a,b)=>a+cards+b);
+fs.writeFileSync('dist/index.html',html);
+const keys=['ticker','reportDate','period','metric','label','value','unit','status','sourcePage','pdfUrl','definition'];
+const csv=x=>{let s=String(x??'');if(typeof x==='string'&&/^[\s]*[=+@-]/.test(s))s="'"+s;return '"'+s.replaceAll('"','""')+'"';};
+fs.writeFileSync('dist/data/financial-series.csv','\uFEFF'+[keys.join(','),...series.rows.map(r=>keys.map(k=>csv(r[k])).join(','))].join('\r\n')+'\r\n');
+console.log({staticReports:reports.length,csvRows:series.rows.length});

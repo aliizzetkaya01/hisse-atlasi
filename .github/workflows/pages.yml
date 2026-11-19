@@ -19,7 +19,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
       - name: Validate archive and relative links
-        run: node scripts/validate-site.mjs
+        run: |
+          node scripts/build-public-index.mjs
+          node scripts/validate-site.mjs
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload static site
