@@ -1,4 +1,5 @@
 ﻿id,ticker,company,date,sector,market,type,pageCount,textPages,tableRows,sha256,file
+1aa2a78dbe7b5d37,NVDA,NVIDIA,2026-11-18,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,57,57,212,1aa2a78dbe7b5d3791f3666a165c45ae9a82bb31b20e5e6525ba9708ba2d9813,reports/1aa2a78dbe7b5d37.pdf
 412d4bfb4868436a,CEVA,Ceva,2026-11-17,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,59,59,188,412d4bfb4868436addcd02f5f8690698353f1b1322fecd4b3e94473cdbe06645,reports/412d4bfb4868436a.pdf
 3b76bf5a4a1befe0,SITM,SiTime,2026-11-15,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,64,64,222,3b76bf5a4a1befe05c8f5480ca4e7161a6f092bb4dadf752bdca8ea2d2756307,reports/3b76bf5a4a1befe0.pdf
 88221b6a5f0ca8d9,OLED,Universal Display,2026-11-14,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,56,56,251,88221b6a5f0ca8d9f1a75939f3e1c5c1f22d0c6dbd9dc38b3fa6b5c7283fd165,reports/88221b6a5f0ca8d9.pdf

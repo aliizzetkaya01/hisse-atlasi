@@ -1,7 +1,22 @@
 {
   "title": "Hisse Atlası",
-  "catalogDate": "2026-11-17",
+  "catalogDate": "2026-11-19",
   "reports": [
+    {
+      "id": "1aa2a78dbe7b5d37",
+      "ticker": "NVDA",
+      "company": "NVIDIA",
+      "date": "2026-11-18",
+      "sector": "Yarı iletken & IP",
+      "market": "NASDAQ / ABD",
+      "type": "Tam rapor",
+      "revision": false,
+      "filename": "NVDA_Gunluk_Hisse_Analizi_2026-11-18.pdf",
+      "bytes": 1814426,
+      "sha256": "1aa2a78dbe7b5d3791f3666a165c45ae9a82bb31b20e5e6525ba9708ba2d9813",
+      "file": "reports/1aa2a78dbe7b5d37.pdf",
+      "origin": "Şirket araştırması"
+    },
     {
       "id": "412d4bfb4868436a",
       "ticker": "CEVA",

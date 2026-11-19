@@ -3,7 +3,7 @@
 Outputs preserve PDF/page lineage; parsed cover KPIs are archival observations,
 not live quotes or a newly reviewed investment recommendation.
 """
-import argparse, csv, hashlib, io, json, re, unicodedata, sys
+import argparse, csv, hashlib, io, json, re, unicodedata, sys, subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 from pypdf import PdfReader
@@ -55,8 +55,8 @@ def cover_kpis(pages):
         low = line.casefold().replace('\u0307','')
         kind = None
         if re.match(r'^(spot\b|referans fiyat|son normal seans)',low) and not re.search(r'potans|getiri|oran',low): kind='spot'
-        elif re.match(r'^12\s*a\s*baz\s*hedef\b|^12a\s*baz\s*hedef\b|^12\s*aylık\s*(?:baz|kesin)?\s*hedef\b',low): kind='target'
-        elif re.match(r'^(?:stratejik\s*)?dcf\b',low): kind='dcf'
+        elif re.match(r'^12\s*a\s*(?:koşullu\s*)?baz\s*hedef\b|^12\s*aylık\s*(?:koşullu\s*)?(?:baz|kesin)?\s*hedef\b',low): kind='target'
+        elif re.match(r'^(?:(?:stratejik|uzun\s*vadeli)\s*)?dcf\b',low): kind='dcf'
         if not kind or kind in fields: continue
         following = lines[i+1] if i+1 < len(lines) else ''
         previous = lines[i-1] if i else ''
@@ -95,6 +95,10 @@ def table_lines(layout):
 
 def main():
     catalog=json.loads((DIST/'catalog.json').read_text(encoding='utf-8'))
+    published_kpis={}
+    if '--preserve-published-kpis' in sys.argv:
+        published=json.loads(subprocess.check_output(['git','show','HEAD:dist/data/manifest.json'],cwd=ROOT))
+        published_kpis={r['id']:r['kpis'] for r in published['reports']}
     out=DIST/'data';(out/'reports').mkdir(parents=True,exist_ok=True)
     inventory=[];search=[];all_pages=[];observations=[];total_tables=0;all_text_chars=0
     for ri,r in enumerate(catalog['reports'],1):
@@ -125,7 +129,7 @@ def main():
                     if uri.startswith('https://') and not re.search(r'token=|sig=|key=',uri,re.I):links.append({'page':pi,'url':uri})
                 except Exception:pass
         whole='\n'.join(p['text'] for p in pages)
-        kpis=cover_kpis(pages)
+        kpis=published_kpis[r['id']] if r['id'] in published_kpis else cover_kpis(pages)
         row={**r,'pageCount':len(pages),'textPages':sum(p['characters']>40 for p in pages),'characterCount':len(whole),'tablePages':len(tables),'tableRows':sum(len(t['rows']) for t in tables),'replacementCharacters':whole.count('\ufffd'),'kpis':kpis,'dataFile':'data/reports/'+r['id']+'.json'}
         inventory.append(row);search.append({'id':r['id'],'text':whole})
         payload={'schemaVersion':'1.0','report':row,'pages':pages,'tables':tables,'links':links,'license':'CC-BY-NC-4.0','author':'Ali İzzet KAYA','qualification':'PDF arşivinden otomatik aktarım; güncel piyasa verisi veya yeni mali doğrulama değildir. Raster grafikler sayısallaştırılmamıştır.'}

@@ -8,10 +8,10 @@ Araştırma arşivi sahibi: **Ali İzzet KAYA**.
 
 Veri laboratuvarı: https://aliizzetkaya01.github.io/hisse-atlasi/explore/
 
-96 PDF'nin 2.603 sayfası aranabilir metin ve sayfa/bölüm dizinine çevrilmiştir.
+97 PDF'nin 2.660 sayfası aranabilir metin ve sayfa/bölüm dizinine çevrilmiştir.
 Şirket, sektör ve tarih filtreleri; rapor içi arama, kaynak sayfası bağlantısı,
 JSON/CSV indirme ve en fazla beş raporun kapak göstergelerini karşılaştırma vardır.
-10.111 otomatik tablo-adayı satır, denetlenmiş/normalize edilmiş mali seri değildir.
+10.323 otomatik tablo-adayı satır, denetlenmiş/normalize edilmiş mali seri değildir.
 Resim grafikler sayısallaştırılmamıştır. Eksik veya kurulamadı alanlar null tutulur.
 Fiyat ve hedefler tarihlidir; hedef/spot farkı gerçekleşmiş getiri değildir.
 İlk otomatik yayın eksik PDF'leri mevcut herkese açık arşivden indirir, her birinin
