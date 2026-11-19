@@ -1,4 +1,4 @@
-import {localizeDocument} from './site-language.js';
+import {localizeDocument} from './site-language.js?v=20261119-ui2';
 import {getLanguage} from './i18n.mjs';
 const $=s=>document.querySelector(s);
 const date=s=>new Intl.DateTimeFormat(getLanguage()==='en'?'en-US':'tr-TR',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(s+'T12:00:00Z'));
