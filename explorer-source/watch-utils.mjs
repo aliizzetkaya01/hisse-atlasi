@@ -4,11 +4,12 @@ export function tradingSymbol(ticker){
  if(!/^[A-Z0-9.-]{1,12}$/.test(ticker||''))throw Error('Invalid ticker');
  return special[ticker]||'NASDAQ:'+ticker;
 }
-export function widgetUrl(symbol,range='12M',compare=true,pageUri=''){
+export function widgetUrl(symbol,range='12M',compare=true,pageUri='',language='tr'){
  if(!['1M','3M','6M','12M','60M'].includes(range)||!/^[A-Z0-9:.-]+$/.test(symbol))throw Error('Invalid market selection');
- const settings={symbol,range,interval:'D',timezone:'Etc/UTC',locale:'tr',theme:'light',style:'2',width:'100%',height:'100%',autosize:true,allow_symbol_change:true,hide_volume:true,hide_side_toolbar:true,hide_top_toolbar:false,withdateranges:true,save_image:false,percentage:compare,compareSymbols:compare?[{symbol:'TVC:DXY',position:'SameScale'}]:[]};
+ const locale=language==='en'?'en':'tr';
+ const settings={symbol,range,interval:'D',timezone:'Etc/UTC',locale,theme:'light',style:'2',width:'100%',height:'100%',autosize:true,allow_symbol_change:true,hide_volume:true,hide_side_toolbar:true,hide_top_toolbar:false,withdateranges:true,save_image:false,percentage:compare,compareSymbols:compare?[{symbol:'TVC:DXY',position:'SameScale'}]:[]};
  if(pageUri.startsWith('https://aliizzetkaya01.github.io/'))settings['page-uri']=new URL(pageUri).origin+new URL(pageUri).pathname;
- return TV_BASE+'?locale=tr#'+encodeURIComponent(JSON.stringify(settings));
+ return TV_BASE+'?locale='+locale+'#'+encodeURIComponent(JSON.stringify(settings));
 }
 export function financialSeries(rows,{reportId,metric,from='',to='',mode='absolute'}){
  const sourceRows=rows.filter(r=>r.reportId===reportId&&r.metric===metric&&(!from||r.period>=from)&&(!to||r.period<=to)).sort((a,b)=>a.period.localeCompare(b.period));

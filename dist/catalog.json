@@ -3,6 +3,21 @@
   "catalogDate": "2026-11-19",
   "reports": [
     {
+      "id": "1619f9e308d3547f",
+      "ticker": "AOSL",
+      "company": "Alpha and Omega Semiconductor",
+      "date": "2026-11-19",
+      "sector": "Yarı iletken & IP",
+      "market": "NASDAQ / ABD",
+      "type": "Tam rapor",
+      "revision": false,
+      "filename": "AOSL_Gunluk_Hisse_Analizi_2026-11-19.pdf",
+      "bytes": 1788214,
+      "sha256": "1619f9e308d3547fbb6454d3a3e8b66a75b9817887662ccbfe6f781b5127fe72",
+      "file": "reports/1619f9e308d3547f.pdf",
+      "origin": "Şirket araştırması"
+    },
+    {
       "id": "1aa2a78dbe7b5d37",
       "ticker": "NVDA",
       "company": "NVIDIA",

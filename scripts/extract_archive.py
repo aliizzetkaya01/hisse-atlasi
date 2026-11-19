@@ -82,6 +82,12 @@ def cover_kpis(pages):
                 if m:outlook=m;break
     if outlook:
         fields['outlook']={'value':outlook[1][0].upper()+outlook[1][1:].lower(),'page':1,'quote':outlook[0]}
+    # Reviewed B-stage cover: keep unavailable target separate from narrative DCF.
+    if re.search(r'12\s*A baz / PW\s+Kurulamadı',text):
+        m=re.search(r'12\s*A baz / PW\s+Kurulamadı',text)
+        fields['target']={'value':None,'currency':None,'status':'kurulamadı','page':1,'quote':m[0]}
+        m=re.search(r'Koşullu stratejik DCF baz\s+([\d.,]+)\s+USD',text)
+        if m:fields['dcf']={'value':number(m[1]),'currency':'USD','status':'koşullu stratejik DCF; 12A hedef değil','page':1,'quote':m[0]}
     return fields
 
 def table_lines(layout):

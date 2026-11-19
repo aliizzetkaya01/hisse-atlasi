@@ -1,4 +1,5 @@
 ﻿id,ticker,company,date,sector,market,type,pageCount,textPages,tableRows,sha256,file
+1619f9e308d3547f,AOSL,Alpha and Omega Semiconductor,2026-11-19,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,47,47,158,1619f9e308d3547fbb6454d3a3e8b66a75b9817887662ccbfe6f781b5127fe72,reports/1619f9e308d3547f.pdf
 1aa2a78dbe7b5d37,NVDA,NVIDIA,2026-11-18,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,57,57,212,1aa2a78dbe7b5d3791f3666a165c45ae9a82bb31b20e5e6525ba9708ba2d9813,reports/1aa2a78dbe7b5d37.pdf
 412d4bfb4868436a,CEVA,Ceva,2026-11-17,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,59,59,188,412d4bfb4868436addcd02f5f8690698353f1b1322fecd4b3e94473cdbe06645,reports/412d4bfb4868436a.pdf
 3b76bf5a4a1befe0,SITM,SiTime,2026-11-15,Yarı iletken & IP,NASDAQ / ABD,Tam rapor,64,64,222,3b76bf5a4a1befe05c8f5480ca4e7161a6f092bb4dadf752bdca8ea2d2756307,reports/3b76bf5a4a1befe0.pdf

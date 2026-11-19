@@ -4,6 +4,7 @@ import crypto from 'node:crypto';
 const work=path.resolve('../../work');
 const catalog=JSON.parse(fs.readFileSync('dist/catalog.json','utf8'));
 const adapters=[
+ ['AOSL','aosl_2026-11-19','2026-11-19'],
  ['NVDA','nvda_2026-11-18','2026-11-18'],['SITM','sitm_2026-11-15','2026-11-15'],
  ['OLED','oled_2026-11-14','2026-11-14'],['MXL','mxl_2026-11-13','2026-11-13'],
  ['CEVA','ceva_2026-11-16','2026-11-17'],['TSEM','tsem_2026-10-18','2026-10-18'],
@@ -34,7 +35,7 @@ for(const [ticker,folder,reportDate]of adapters){
   const cfo=first(cf,['cfo']);
   const capex=first(cf,['capex_cash_purchases','capex_ppe','capex_cash','capex_investment_line','capex']);
   const values={revenue,cfo,operating_income:op,net_income:ni,
-   eps_gaap:first(r.eps||r,['diluted','eps_diluted']),
+   eps_gaap:first(r.eps||r,['diluted','eps_diluted','diluted_eps']),
    fcf_ppe:finite(cfo)&&finite(capex)&&capex>=0?cfo-capex:null,
    fcf_company:ticker==='NVDA'?r.fcf_reported_definition:null,
    gross_margin:revenue>0&&finite(gp)?gp/revenue*100:null,

@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import {financialSeries,widgetUrl,tradingSymbol} from '../explorer-source/watch-utils.mjs';
 const data=JSON.parse(fs.readFileSync('dist/data/financial-series.json','utf8'));
 const catalog=JSON.parse(fs.readFileSync('dist/catalog.json','utf8'));
-assert.equal(data.coverage.length,10);
+assert.equal(data.coverage.length,11);
 for(const r of data.rows){
  const p=catalog.reports.find(p=>p.id===r.reportId);assert(p);assert.equal(p.ticker,r.ticker);assert.equal(p.date,r.reportDate);
  assert.match(r.period,/^FY20\d\d$/);assert(r.value===null||Number.isFinite(r.value));
@@ -26,6 +26,7 @@ assert.equal(tradingSymbol('MCD'),'NYSE:MCD');assert.throws(()=>tradingSymbol('N
 for(const r of data.rows.filter(r=>r.ticker==='NVDA'&&r.metric==='fcf_ppe')){const c=data.rows.find(c=>c.reportId===id&&c.period===r.period&&c.metric==='cfo');assert(c.value>=r.value);}
 const build=JSON.parse(fs.readFileSync('dist/explore/data-app-build.json','utf8'));
 const snap=JSON.parse(fs.readFileSync('dist/explore/'+build.snapshot.path,'utf8'));
-assert.equal(snap.queries.financials.rows.length,data.rows.length);assert.equal(snap.queries.market_widgets.rows.length,86);
+assert.equal(snap.queries.financials.rows.length,data.rows.length);assert.equal(snap.queries.market_widgets.rows.length,87);
 assert.equal(snap.buildStatus,'complete');
-console.log(JSON.stringify({passed:true,companies:10,observations:data.rows.length,normalizedViewsChecked:true,negativeAndNullRulesChecked:true,providerConfigurationChecked:true,originalReportsUnchanged:97}));
+assert.equal(JSON.parse(decodeURIComponent(new URL(widgetUrl('NASDAQ:AOSL','12M',true,'','en')).hash.slice(1))).locale,'en');
+console.log(JSON.stringify({passed:true,companies:11,observations:data.rows.length,normalizedViewsChecked:true,negativeAndNullRulesChecked:true,providerConfigurationChecked:true}));

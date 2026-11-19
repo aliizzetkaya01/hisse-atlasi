@@ -77,6 +77,29 @@ Parametre verilmezse yerel kullanıcının masaüstündeki `Nasdaq Hisse Analizi
 klasörü kullanılır. Kişisel portföy raporları ve çalışma taslakları kapsam dışıdır.
 Katalogdaki `sha256` ve `bytes`, PDF bütünlüğünü doğrulamaya yarar.
 
+## Türkçe / English arayüz
+
+Ana sayfa, veri laboratuvarı ve lisans sayfasının sağ üstündeki dil seçimi
+aynı tercihi paylaşır. `?lang=tr` ve `?lang=en` doğrudan bağlantılarda da
+kullanılabilir; tercih bu sitenin yerel depolamasında saklanır. Bu yalnız
+arayüz çevirisidir: kaynak PDF, rapor alıntıları ve özgün veri kayıtları
+çevrilmez. Haricî TradingView paneline seçilen arayüz dili aktarılır.
+
+19 Kasım 2026 güncellemesi: 98 belge, 87 şirket, 2.707 PDF sayfası.
+AOSL'nin 12 aylık hedefi kurulamadığından eksik bırakılmış; koşullu stratejik
+DCF ayrı alanda tutulmuştur. 11 şirketin eşleşen yıllık finansal serilerinde
+545 gözlem vardır. Bu sayısallaştırma yeni bir finansal denetim değildir.
+
+Yayın öncesi kontroller:
+
+    node scripts/test-bilingual-addition.mjs
+    node scripts/test-watch-charts.mjs
+    node scripts/validate-site.mjs
+
+Arayüzün ortak çeviri kaynağı `explorer-source/shared/i18n.mjs` dosyasıdır.
+Tam Data uygulamasında düzenleme sonrası `scripts/sync-authored-sources.mjs`
+ile paylaşılan dosyalar kopyalanır; ardından mevcut derleyici kullanılır.
+
 ## Haklar ve kapsam
 
 Özgün yazılım kodu [MIT](LICENSE), özgün rapor ve analizler
