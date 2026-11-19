@@ -4,6 +4,7 @@ const series=JSON.parse(fs.readFileSync('dist/data/financial-series.json','utf8'
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const date=x=>new Intl.DateTimeFormat('tr-TR',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(x+'T12:00:00Z'));
 let html=fs.readFileSync('dist/index.html','utf8');
+html=html.replace('href="explore/">Veri laboratuvarı ↗','href="markets/">Veri laboratuvarı ↗').replace('class="hero-link" href="explore/"','class="hero-link" href="markets/"');
 const set=(id,value)=>{const re=new RegExp('(<[^>]+ id="'+id+'"[^>]*>)[^<]*(</[^>]+>)');html=html.replace(re,(_,a,b)=>a+esc(value)+b);};
 const companies=new Set(reports.map(r=>r.ticker)).size;
 set('report-count',reports.length);set('company-count',companies);set('latest-date',date(reports[0].date));

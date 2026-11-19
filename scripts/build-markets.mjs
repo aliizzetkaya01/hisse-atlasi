@@ -1,0 +1,21 @@
+import fs from 'node:fs';
+const {reports}=JSON.parse(fs.readFileSync('dist/catalog.json','utf8'));
+const e=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const bi=(tr,en)=>`<span class="tr">${tr}</span><span class="en">${en}</span>`;
+const link=(url,label)=>`<a href="${e(url)}">${label}</a>`;
+const panel=(id,title,body)=>`<section id="${id}" class="market-panel"><h2>${title}</h2>${body}</section>`;
+const domestic=reports.filter(r=>r.market==='BIST');
+const stocks=rows=>'<ul>'+rows.map(r=>`<li><strong>${e(r.ticker)}</strong> · ${e(r.company)} · <time>${e(r.date)}</time> · ${link('../'+r.file,'PDF')}${['ASELS','MPARK'].includes(r.ticker)?' · '+link('https://fintables.com/sirketler/'+r.ticker,bi('Fintables: grafik ve finansallar','Fintables: chart and financials')):''}</li>`).join('')+'</ul>';
+const pages={
+ markets:[bi('Veri Laboratuvarı','Data Lab'),panel('markets',bi('Piyasa seçin','Choose a market'),'<p>'+link('../yurt-ici/',bi('Yurt İçi','Türkiye'))+' · '+link('../yurt-disi/',bi('Yurt Dışı','International'))+'</p>')],
+ 'yurt-ici':[bi('Yurt İçi','Türkiye'),
+  '<nav aria-label="Bölümler / Sections">'+link('#bist','BIST')+' · '+link('#tahviller',bi('Tahviller','Bonds'))+' · '+link('#tcmb','TCMB')+'</nav>'+
+  panel('bist',bi('BIST hisseleri','BIST equities'),'<p>'+bi('Fiyat grafiği, XU100 ve kur karşılaştırması, bilanço, gelir tablosu, nakit akışı ve rasyolar Fintables’da açılır. Arşiv PDF’leri rapor tarihine aittir. Fintables ham verisi bu sitede yeniden yayımlanmaz.','Open Fintables for price charts, index and FX comparisons, financial statements and ratios. Archived PDFs reflect their report dates. Raw Fintables data is not republished here.')+'</p>'+stocks(domestic))+
+  panel('tahviller',bi('Devlet tahvilleri ve özel sektör borçlanma araçları','Government and corporate debt'),'<ul><li>'+link('https://www.hmb.gov.tr/kamu-finansmani-sikca-sorulan-sorular',bi('Hazine ve Maliye Bakanlığı · DİBS','Treasury and Finance Ministry · government debt'))+'</li><li>'+link('https://www.kap.org.tr/',bi('KAP · ÖSBA ihraç açıklamaları','KAP · corporate debt disclosures'))+'</li></ul><p>'+bi('Bu bölüm kaynak bağlantıları sunar; fiyat veya getiri serisi henüz bağlı değil.','This section links to sources; price and yield feeds are not connected yet.')+'</p>')+
+  panel('tcmb',bi('TCMB repo ve menkul kıymetleri','CBRT repo and securities'),'<p>'+link('https://tcmb.gov.tr/wps/wcm/connect/TR/TCMB%2BTR/Main%2BMenu/Temel%2BFaaliyetler/Piyasalar/Acik%2BPiyasa%2BIslemleri/',bi('TCMB · Repo, ters repo ve likidite senetleri','CBRT · repo, reverse repo and liquidity bills'))+' · '+link('https://evds2.tcmb.gov.tr/','EVDS')+'</p><p>'+bi('TCMB’nin ihraç ettiği likidite senetleri ile repo teminatı olarak kullanılan kıymetler ayrı izlenir. Bu bölümde henüz canlı seri yok.','CBRT-issued liquidity bills are distinct from securities used as repo collateral. There is no live feed here yet.')+'</p>')],
+ 'yurt-disi':[bi('Yurt Dışı','International'),panel('hisseler',bi('Yurt dışı hisseleri','International equities'),'<p>'+link('../explore/',bi('Finansal grafikler ve DXY karşılaştırması','Financial charts and DXY comparison'))+'</p>'+stocks(reports.filter(r=>r.market!=='BIST')))]
+};
+for(const [slug,[headline,body]] of Object.entries(pages)){
+ fs.mkdirSync('dist/'+slug,{recursive:true});
+ fs.writeFileSync('dist/'+slug+'/index.html',`<!doctype html><html lang="tr"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Hisse Atlası · ${slug}</title><link rel="stylesheet" href="../style.css"><style>html[lang=tr] .en,html[lang=en] .tr{display:none}.market-panel{padding:1.5rem 0;border-bottom:1px solid #bccbc6}.market-panel li{margin:.65rem 0}.market-panel p{max-width:75ch}</style><body><header><a class="brand" href="../">Hisse Atlası</a><nav>${link('../markets/','Veri Laboratuvarı / Data Lab')} ${link('../yurt-ici/','Yurt İçi / Türkiye')} ${link('../yurt-disi/','Yurt Dışı / International')}</nav><div class="language-switch"><button type="button" data-language="tr">Türkçe</button><button type="button" data-language="en">English</button></div></header><main><h1>${headline}</h1>${body}</main><script type="module" src="../site-language.js?v=20261119-ui2"></script></body></html>`);
+}
