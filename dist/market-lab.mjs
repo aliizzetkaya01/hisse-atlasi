@@ -1,5 +1,5 @@
 import {getLanguage,saveLanguage,translate} from './i18n.mjs';
-import {financialRows,parseCloseCsv} from './market-financials.mjs';
+import {financialRows} from './market-financials.mjs';
 const $=s=>document.querySelector(s), lab=$('.market-lab'), controls=$('#lab-controls'), view=$('#lab-view');
 const home=lab.dataset.market==='yurt-ici';
 let lang=getLanguage(), section='bist', ticker='', reportId='', range='12M', compare=true, debt='government', cb='repo', year='all', isin='all';
@@ -15,7 +15,7 @@ const csvLabel=()=>t('Görünen tabloyu CSV indir','Download visible table as CS
 let exportRows=[];
 const panelExports=new Map();
 let nextPanel=3;
-const panels=[{id:1,metric:'cfo'},{id:2,metric:'fcf_ppe'}].map(p=>({...p,ticker:'',reportId:'',scale:'absolute',from:'',to:''}));
+const panels=[{id:1,metric:home?'gross_margin':'cfo'},{id:2,metric:home?'cfo_revenue':'fcf_ppe'}].map(p=>({...p,ticker:'',reportId:'',scale:'absolute',from:'',to:''}));
 function tabular(headers,rows,raw,slot=''){
  if(!slot)exportRows=[headers,...raw];
  return `<div class="lab-table"><table><thead><tr>${headers.map(h=>'<th scope="col">'+esc(h)+'</th>').join('')}</tr></thead><tbody>${rows.map(r=>'<tr>'+r.map(v=>'<td>'+v+'</td>').join('')+'</tr>').join('')}</tbody></table></div><p><button class="lab-btn" data-export="${slot}" type="button">${csvLabel()}</button></p>`;
@@ -45,13 +45,6 @@ function plot(rows,unit,mode){
 const sourceLabel=()=>t('Kaynak','Source'), dateLabel=()=>t('Tarih','Date');
 let selectedFrame='';
 const marketSymbols={MCD:'NYSE:MCD',SKHY:'KRX:000660',CLMT:'NASDAQ:CLMT',MXL:'NASDAQ:MXL',TER:'NASDAQ:TER'};
-const alternativeCharts={ASELS:'https://www.investing.com/equities/aselsan-chart',MPARK:'https://www.investing.com/equities/mlp-saglik-chart'};
-const localCloses=new Map();
-function localBistChart(){
- const box=$('#bist-local-chart');if(!box)return;
- const rows=localCloses.get(ticker);
- box.innerHTML=rows?note(esc(ticker+' · '+rows.length+' '+t('kapanış · kullanıcı CSV’si','closes · user CSV')))+plot(rows,'TRY', 'line'):'';
-}
 function stockView(all){
  const stocks=all.filter(r=>(r.market==='BIST')===home);
  const choices=[...new Map(stocks.map(r=>[r.ticker,r.company])).entries()].sort((a,b)=>a[0].localeCompare(b[0]));
@@ -60,7 +53,7 @@ function stockView(all){
  const r=reports.find(r=>r.id===reportId)||reports[0];
  if(!r){view.innerHTML=note(t('Rapor bulunamadı.','No report found.'));return;}
  reportId=r.id;
- controls.innerHTML=`<div class="lab-controls">${select('ticker',t('Hisse','Ticker'),choices.map(([k,v])=>opt(k,k+' · '+v,ticker)).join(''))}${select('report',t('Arşiv raporu','Archived report'),reports.map(q=>opt(q.id,q.date,reportId)).join(''))}${select('range',t('Grafik dönemi','Chart range'),[['1M','1 ay','1 month'],['3M','3 ay','3 months'],['12M','1 yıl','1 year'],['60M','5 yıl','5 years']].map(([id,a,b])=>opt(id,t(a,b),range)).join(''))+`<label><span>${t('Karşılaştırma','Compare with')}</span><select id="compare">${opt('yes',home?'BIST 100':'DXY',compare?'yes':'no')}${opt('no',t('Yalnız hisse','Stock only'),compare?'yes':'no')}</select></label>`}</div>`;
+ controls.innerHTML=`<div class="lab-controls">${select('ticker',t('Hisse','Ticker'),choices.map(([k,v])=>opt(k,k+' · '+v,ticker)).join(''))}${select('report',t('Arşiv raporu','Archived report'),reports.map(q=>opt(q.id,q.date,reportId)).join(''))}${home?'':select('range',t('Grafik dönemi','Chart range'),[['1M','1 ay','1 month'],['3M','3 ay','3 months'],['12M','1 yıl','1 year'],['60M','5 yıl','5 years']].map(([id,a,b])=>opt(id,t(a,b),range)).join(''))+`<label><span>${t('Karşılaştırma','Compare with')}</span><select id="compare">${opt('yes','DXY',compare?'yes':'no')}${opt('no',t('Yalnız hisse','Stock only'),compare?'yes':'no')}</select></label>`}</div>`;
  const symbol=home?'BIST:'+ticker:marketSymbols[ticker]||'NASDAQ:'+ticker, benchmark=home?'BIST:XU100':'TVC:DXY';
  const cfg={symbol,range,interval:'D',theme:'light',style:'2',locale:lang,autosize:true,allow_symbol_change:true,hide_side_toolbar:true,hide_top_toolbar:false,withdateranges:true,percentage:compare,compareSymbols:compare?[{symbol:benchmark,position:'SameScale'}]:[]};
  const frame='https://www.tradingview-widget.com/embed-widget/advanced-chart/?locale='+lang+'#'+encodeURIComponent(JSON.stringify(cfg));
@@ -71,37 +64,25 @@ function stockView(all){
   return [label,fmt,r.date,'../'+r.file+(d.page?'#page='+d.page:''),d.value,d.currency||'',d.status||''];
  });
  const headers=[t('Gösterge','Metric'),t('Rapor değeri','Report value'),dateLabel(),sourceLabel()];
- const links=href('../'+r.file,'PDF')+' · '+href('../explore/?report='+r.id,t('Ayrıntılı rapor ve veri','Report and detailed data'))+(home?' · '+href('https://fintables.com/sirketler/'+ticker,t('Fintables: fiyat, karşılaştırma ve finansallar','Fintables: price, comparisons and financials')):'');
- const local=home?`<div id="market-frame" class="lab-frame tradingview-widget-container"><div class="tradingview-widget-container__widget"></div></div>`+
- note(t('Grafik: TradingView. Veri gecikmesi ve sembol kapsamı sağlayıcıya bağlıdır. Grafik görünmezse TradingView’da doğrudan açabilirsiniz.','Chart by TradingView. Data delays and symbol coverage depend on the provider. Open on TradingView directly if the chart is unavailable.'))+
- href('https://www.tradingview.com/chart/?symbol='+encodeURIComponent(symbol),t('Grafiği TradingView’da aç','Open chart on TradingView'))+
- note(t('Kullanım hakkınız olan TRY kapanış dosyasını da yerel olarak grafiğe çevirebilirsiniz; dosya tarayıcınızdan çıkmaz.','You can also chart a permitted TRY closing-price file locally; it stays in your browser.'))+
- `<div class="lab-links">${alternativeCharts[ticker]?href(alternativeCharts[ticker],t('Grafiği Investing.com’da aç','Open chart on Investing.com')):''}</div><label>${t('Kapanış CSV’si seç (date,close; tarih YYYY-AA-GG)','Choose close-price CSV (date,close; date YYYY-MM-DD)')} <input type="file" id="bist-csv" accept=".csv,text/csv"></label><p id="bist-csv-status" role="status"></p><div id="bist-local-chart"></div>`:
+ const links=href('../'+r.file,'PDF')+' · '+href('../explore/?report='+r.id,t('Ayrıntılı rapor ve veri','Report and detailed data'));
+ const local=home?'':
  `<div id="market-frame"></div>`+note(t('Piyasa grafiği TradingView tarafından sağlanır; gecikme ve kapsam sağlayıcıya bağlıdır.','Market chart from TradingView; coverage and delays depend on the provider.'))+href('https://www.tradingview.com/chart/?symbol='+encodeURIComponent(symbol),t('Grafiği TradingView’da aç','Open on TradingView'));
  view.innerHTML=card(esc(ticker+' · '+r.company),`<div class="lab-links">${links}</div>`+local)+card(t('Raporda yayımlanan göstergeler','Metrics published in the report'),note(t('Tarihli rapor değerleridir; canlı kotasyon veya gerçekleşmiş getiri değildir.','Dated report values, not live quotes or realised returns.'))+tabular(headers,selected.map(([a,b,c,d])=>[esc(a),esc(b),esc(c),href(d,'PDF')]),selected));
  exportRows=[['metric','value','currency','status','report_date','source'],...selected.map(([label,,date,url,value,currency,status])=>[label,value,currency,status,date,new URL(url,location.href).href])];
- if(home){
-  const widget=$('#market-frame');
-  widget.querySelector('.tradingview-widget-container__widget').style.height='100%';
-  const embed=document.createElement('script');
-  embed.src='https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
-  embed.async=true;embed.textContent=JSON.stringify({...cfg,hide_volume:true});
-  widget.append(embed);
-  localBistChart();return;
- }
+ if(home)return;
  if(prev&&selectedFrame===frame){$('#market-frame').append(prev)}else{const f=document.createElement('iframe');f.className='lab-frame';f.title=t('Hisse fiyat grafiği','Stock price chart');f.src=frame;$('#market-frame').append(f);selectedFrame=frame;}
 }
 function financialView(all,data){
- const area=$('#financial-workbench'), foreign=all.filter(r=>r.market!=='BIST'), byId=new Map(foreign.map(r=>[r.id,r]));
+ const area=$('#financial-workbench'), foreign=all.filter(r=>(r.market==='BIST')===home), byId=new Map(foreign.map(r=>[r.id,r]));
  const supported=data.filter(r=>byId.has(r.reportId));
- const names=[...new Map(foreign.filter(r=>r.kpis?.dcf?.value!=null||supported.some(s=>s.reportId===r.id)).map(r=>[r.ticker,r.company])).entries()].sort(([a],[b])=>a.localeCompare(b));
+ const names=[...new Map(foreign.filter(r=>(!home&&r.kpis?.dcf?.value!=null)||supported.some(s=>s.reportId===r.id)).map(r=>[r.ticker,r.company])).entries()].sort(([a],[b])=>a.localeCompare(b));
  const optperiod=(values,value)=>opt('',t('Tümü','All'),value)+values.map(v=>opt(v,v,value)).join('');
  panelExports.clear();
  const cards=panels.map(p=>{
   const symbol=p.ticker||ticker, choices=[...new Set(supported.filter(x=>x.ticker===symbol).map(x=>x.reportId))].sort((a,b)=>byId.get(b).date.localeCompare(byId.get(a).date));
   const report=choices.includes(p.reportId)?p.reportId:choices[0];
   const metrics=new Map(supported.filter(x=>x.reportId===report).map(x=>[x.metric,x.label]));
-  if(foreign.some(x=>x.ticker===symbol&&x.kpis?.dcf?.value!=null))metrics.set('dcf',t('Stratejik DCF (rapor değeri)','Strategic DCF (reported mark)'));
+  if(!home&&foreign.some(x=>x.ticker===symbol&&x.kpis?.dcf?.value!=null))metrics.set('dcf',t('Stratejik DCF (rapor değeri)','Strategic DCF (reported mark)'));
   const metric=metrics.has(p.metric)?p.metric:metrics.keys().next().value;
   const opts=financialRows(supported,foreign,{ticker:symbol,reportId:report,metric,scale:'absolute'});
   const years=[...new Set(opts.rows.map(x=>x.period))];
@@ -125,7 +106,7 @@ function financialView(all,data){
   ${!metrics.size?note(t('Bu hissede kaynakla eşleştirilmiş grafik serisi yok. Kartın hisse seçicisinden başka şirket seçebilirsiniz.','This ticker has no source-matched chart series. Choose another ticker in this card.')):rows.blocked?note(t('Seçilen ölçek bu seri için uygulanamaz. Pozitif gözlemlerle bir aralık seçin veya kaynak birimine dönün.','This scale cannot be used for the selected series. Choose a positive range or source units.')):plot(rows.display,unit,dc?'bar':'line')}
   ${values.length?`<details><summary>${t('Grafiğin verisini ve kaynaklarını göster','Show chart data and sources')}</summary>${tabular(headings,values,[],String(p.id))}</details>`:''}</section>`;
  }).join('');
- area.innerHTML=`<div class="fin-title"><h2>${t('Finansal grafikleri karşılaştır','Compare financial charts')}</h2><button type="button" class="lab-btn" data-add-chart ${panels.length===8?'disabled':''}>${t('+ Grafik ekle','+ Add chart')} · ${panels.length}/8</button></div>`+
+ area.innerHTML=`<div class="fin-title"><h2>${(home?t('Şirket rasyolarını karşılaştır','Compare company ratios'):t('Finansal grafikleri karşılaştır','Compare financial charts'))}</h2><button type="button" class="lab-btn" data-add-chart ${panels.length===8?'disabled':''}>${t('+ Grafik ekle','+ Add chart')} · ${panels.length}/8</button></div>`+
  note(t('Her kartın hisse, gösterge ve dönem seçimi bağımsızdır. Grafiklerin eksenleri ayrı ölçeklenir; aynı metrik ve birimi seçerek büyüklükleri, başlangıç = 100 ile göreli değişimi karşılaştırın. Yıllık seriler yalnızca kaynakla eşleşen raporlarda bulunur.','Ticker, metric and range are independent for each card. Axes scale separately: compare amounts with the same metric and unit, or relative change with Start = 100. Annual series are limited to source-matched reports.'))+`<div class="fin-grid">${cards}</div>`;
 }
 function rateView(ref){
@@ -156,16 +137,16 @@ const sections=['bist','tahviller','tcmb'];
 function hashSection(){return sections.includes(location.hash.slice(1))?location.hash.slice(1):'bist';}
 section=hashSection();buttons();
 try{
- const [all,ref,fin]=await Promise.all([read('../data/market-reports.json'),home?read('../data/markets-reference.json'):null,home?null:read('../data/financial-series.json').catch(()=>null)]);
- function renderFinancial(){if(!home)financialView(all,fin?.rows||[]);}
- function render(){buttons();if(home)navRender();if(!home||section==='bist'){stockView(all);if(!home){controls.insertAdjacentHTML('beforeend','<p>'+href('#financial-workbench',t('Finansal grafik karşılaştırmasına git','Jump to financial chart comparison'))+'</p>');view.insertAdjacentHTML('beforeend','<section id="financial-workbench"></section>');renderFinancial();}}else rateView(ref);}
+ const [all,ref,fin]=await Promise.all([read('../data/market-reports.json'),home?read('../data/markets-reference.json'):null,read(home?'../data/bist-ratios.json':'../data/financial-series.json').catch(()=>null)]);
+ function renderFinancial(){financialView(all,fin?.rows||[]);}
+ function render(){buttons();if(home)navRender();if(!home||section==='bist'){stockView(all);{controls.insertAdjacentHTML('beforeend','<p>'+href('#financial-workbench',t('Finansal grafik karşılaştırmasına git','Jump to financial chart comparison'))+'</p>');view.insertAdjacentHTML(home?'afterbegin':'beforeend','<section id="financial-workbench"></section>');renderFinancial();}}else rateView(ref);}
  render();
  document.addEventListener('click',event=>{
   const button=event.target.closest('button');if(!button)return;
   if(button.dataset.language){lang=button.dataset.language;saveLanguage(lang);render();}
-  if(!home&&button.hasAttribute('data-add-chart')&&panels.length<8){const p={id:nextPanel++,ticker:'',reportId:'',metric:'revenue',scale:'absolute',from:'',to:''};panels.push(p);renderFinancial();document.getElementById('fin-'+p.id+'-ticker')?.focus();}
-  if(!home&&button.dataset.remove&&panels.length>1){const i=panels.findIndex(p=>String(p.id)===button.dataset.remove);if(i>=0){panels.splice(i,1);renderFinancial();$('[data-add-chart]')?.focus();}}
-  if(!home&&button.dataset.resetChart){const p=panels.find(p=>String(p.id)===button.dataset.resetChart);if(p){Object.assign(p,{scale:'absolute',from:'',to:''});renderFinancial();$('[data-reset-chart="'+p.id+'"]')?.focus();}}
+  if($('#financial-workbench')&&button.hasAttribute('data-add-chart')&&panels.length<8){const p={id:nextPanel++,ticker:'',reportId:'',metric:'revenue',scale:'absolute',from:'',to:''};panels.push(p);renderFinancial();document.getElementById('fin-'+p.id+'-ticker')?.focus();}
+  if($('#financial-workbench')&&button.dataset.remove&&panels.length>1){const i=panels.findIndex(p=>String(p.id)===button.dataset.remove);if(i>=0){panels.splice(i,1);renderFinancial();$('[data-add-chart]')?.focus();}}
+  if($('#financial-workbench')&&button.dataset.resetChart){const p=panels.find(p=>String(p.id)===button.dataset.resetChart);if(p){Object.assign(p,{scale:'absolute',from:'',to:''});renderFinancial();$('[data-reset-chart="'+p.id+'"]')?.focus();}}
   if(home&&sections.includes(button.dataset.section)){section=button.dataset.section;history.replaceState(null,'','#'+section);year='all';isin='all';render();nav.querySelector('[data-section="'+section+'"]').focus();}
   if(button.hasAttribute('data-export')){
    const quote=v=>{let s=String(v??'');if(typeof v==='string'&&/^[\s]*[=+@-]/.test(s))s="'"+s;return '"'+s.replaceAll('"','""')+'"';};
@@ -174,13 +155,7 @@ try{
    const a=document.createElement('a');a.href=u;a.download=(section==='bist'?ticker:section)+'-hisse-atlasi.csv';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);
   }
  });
- view.addEventListener('change',async ({target})=>{
-  if(target.id==='bist-csv'){
-   const file=target.files?.[0], symbol=ticker;if(!file)return;
-   try{if(file.size>2_000_000)throw Error('File too large');const rows=parseCloseCsv(await file.text());localCloses.set(symbol,rows);if(ticker===symbol&&section==='bist')localBistChart();}
-   catch{if(ticker===symbol&&$('#bist-csv-status'))$('#bist-csv-status').textContent=t('Dosya okunamadı:.csv, date ve close sütunları, benzersiz ISO tarihler ve pozitif kapanış değerleri gerekir.','Invalid CSV: date and close columns, unique ISO dates and positive closing prices are required.');}
-   return;
-  }
+ view.addEventListener('change',({target})=>{
   const m=target.id.match(/^fin-(\d+)-(ticker|reportId|metric|scale|from|to)$/);
   if(!m)return;
   const p=panels.find(p=>String(p.id)===m[1]);if(!p)return;
