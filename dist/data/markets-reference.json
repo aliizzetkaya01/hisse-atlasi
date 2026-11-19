@@ -1,0 +1,15 @@
+{
+  "government": [
+    ["2026-06-16","TRT160431T35",37.94,"https://ms.hmb.gov.tr/uploads/2026/06/KAF_20260616_ihale_sonucu_5s-dfc8bea776b42636.pdf"],
+    ["2026-11-09","TRT160431T35",39.07,"https://ms.hmb.gov.tr/uploads/2026/11/KAF_20261109_ihale_sonucu_2s_4s-2603a1b49b297ed3.pdf"],
+    ["2026-11-10","TRT270934T18",36.61,"https://ms.hmb.gov.tr/uploads/2026/11/KAF_20261110_ihale_sonucu_8s-0f666aa51177e175.pdf"]
+  ],
+  "corporate": [
+    ["2026-09-21","TRFISKM32719",50.05,"https://www.kap.org.tr/tr/Bildirim/1666512"],
+    ["2026-11-06","TRSKCTFK2719",39.71,"https://www.kap.org.tr/tr/api/BildirimPdf/1694637"]
+  ],
+  "repoSource":"https://www.tcmb.gov.tr/wps/wcm/connect/en/tcmb%2Ben/main%2Bmenu/core%2Bfunctions/monetary%2Bpolicy/central%2Bbank%2Binterest%2Brates/1%2Bweek%2Brepo",
+  "repo":[["2025-01-24",45],["2025-03-07",42.5],["2025-04-18",46],["2025-07-25",43],["2025-09-12",40.5],["2025-10-24",39.5],["2025-12-12",38],["2026-01-23",37],["2026-10-23",36]],
+  "billsSource":"https://www.tcmb.gov.tr/wps/wcm/connect/tr/tcmb%2Btr/main%2Bpage%2Bsite%2Barea/acik%2Bpiyasa%2Bislemleri/likidite%2Bsenedi%2Bihrac%2Bislemleri%2Bverileri",
+  "bills":[["2026-03-02","TRM020426T19",48.34,19999999],["2026-03-03","TRM030426T18",48.05,20000000],["2026-03-04","TRM060426T15",47.42,20000001],["2026-03-05","TRM070426T14",46.29,20000000],["2026-03-06","TRM080426T13",45.52,20000000]]
+}
