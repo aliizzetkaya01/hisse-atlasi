@@ -60,7 +60,7 @@ function stockView(all){
  const r=reports.find(r=>r.id===reportId)||reports[0];
  if(!r){view.innerHTML=note(t('Rapor bulunamadı.','No report found.'));return;}
  reportId=r.id;
- controls.innerHTML=`<div class="lab-controls">${select('ticker',t('Hisse','Ticker'),choices.map(([k,v])=>opt(k,k+' · '+v,ticker)).join(''))}${select('report',t('Arşiv raporu','Archived report'),reports.map(q=>opt(q.id,q.date,reportId)).join(''))}${home?'':select('range',t('Grafik dönemi','Chart range'),[['1M','1 ay','1 month'],['3M','3 ay','3 months'],['12M','1 yıl','1 year'],['60M','5 yıl','5 years']].map(([id,a,b])=>opt(id,t(a,b),range)).join(''))+`<label><span>${t('Karşılaştırma','Compare with')}</span><select id="compare">${opt('yes','DXY',compare?'yes':'no')}${opt('no',t('Yalnız hisse','Stock only'),compare?'yes':'no')}</select></label>`}</div>`;
+ controls.innerHTML=`<div class="lab-controls">${select('ticker',t('Hisse','Ticker'),choices.map(([k,v])=>opt(k,k+' · '+v,ticker)).join(''))}${select('report',t('Arşiv raporu','Archived report'),reports.map(q=>opt(q.id,q.date,reportId)).join(''))}${select('range',t('Grafik dönemi','Chart range'),[['1M','1 ay','1 month'],['3M','3 ay','3 months'],['12M','1 yıl','1 year'],['60M','5 yıl','5 years']].map(([id,a,b])=>opt(id,t(a,b),range)).join(''))+`<label><span>${t('Karşılaştırma','Compare with')}</span><select id="compare">${opt('yes',home?'BIST 100':'DXY',compare?'yes':'no')}${opt('no',t('Yalnız hisse','Stock only'),compare?'yes':'no')}</select></label>`}</div>`;
  const symbol=home?'BIST:'+ticker:marketSymbols[ticker]||'NASDAQ:'+ticker, benchmark=home?'BIST:XU100':'TVC:DXY';
  const cfg={symbol,range,interval:'D',theme:'light',style:'2',locale:lang,autosize:true,allow_symbol_change:true,hide_side_toolbar:true,hide_top_toolbar:false,withdateranges:true,percentage:compare,compareSymbols:compare?[{symbol:benchmark,position:'SameScale'}]:[]};
  const frame='https://www.tradingview-widget.com/embed-widget/advanced-chart/?locale='+lang+'#'+encodeURIComponent(JSON.stringify(cfg));
@@ -72,12 +72,23 @@ function stockView(all){
  });
  const headers=[t('Gösterge','Metric'),t('Rapor değeri','Report value'),dateLabel(),sourceLabel()];
  const links=href('../'+r.file,'PDF')+' · '+href('../explore/?report='+r.id,t('Ayrıntılı rapor ve veri','Report and detailed data'))+(home?' · '+href('https://fintables.com/sirketler/'+ticker,t('Fintables: fiyat, karşılaştırma ve finansallar','Fintables: price, comparisons and financials')):'');
- const local=home?note(t('Alternatif grafik Investing.com’da açılır. Bu sayfada otomatik fiyat akışı bağlı değil. Kullanım hakkınız olan TRY kapanış dosyasını burada grafiğe çevirebilirsiniz; dosya tarayıcınızdan çıkmaz.','Open the alternative chart on Investing.com. No automatic price feed is connected here. Chart a permitted TRY close-price file locally; it stays in your browser.'))+
+ const local=home?`<div id="market-frame" class="lab-frame tradingview-widget-container"><div class="tradingview-widget-container__widget"></div></div>`+
+ note(t('Grafik: TradingView. Veri gecikmesi ve sembol kapsamı sağlayıcıya bağlıdır. Grafik görünmezse TradingView’da doğrudan açabilirsiniz.','Chart by TradingView. Data delays and symbol coverage depend on the provider. Open on TradingView directly if the chart is unavailable.'))+
+ href('https://www.tradingview.com/chart/?symbol='+encodeURIComponent(symbol),t('Grafiği TradingView’da aç','Open chart on TradingView'))+
+ note(t('Kullanım hakkınız olan TRY kapanış dosyasını da yerel olarak grafiğe çevirebilirsiniz; dosya tarayıcınızdan çıkmaz.','You can also chart a permitted TRY closing-price file locally; it stays in your browser.'))+
  `<div class="lab-links">${alternativeCharts[ticker]?href(alternativeCharts[ticker],t('Grafiği Investing.com’da aç','Open chart on Investing.com')):''}</div><label>${t('Kapanış CSV’si seç (date,close; tarih YYYY-AA-GG)','Choose close-price CSV (date,close; date YYYY-MM-DD)')} <input type="file" id="bist-csv" accept=".csv,text/csv"></label><p id="bist-csv-status" role="status"></p><div id="bist-local-chart"></div>`:
  `<div id="market-frame"></div>`+note(t('Piyasa grafiği TradingView tarafından sağlanır; gecikme ve kapsam sağlayıcıya bağlıdır.','Market chart from TradingView; coverage and delays depend on the provider.'))+href('https://www.tradingview.com/chart/?symbol='+encodeURIComponent(symbol),t('Grafiği TradingView’da aç','Open on TradingView'));
  view.innerHTML=card(esc(ticker+' · '+r.company),`<div class="lab-links">${links}</div>`+local)+card(t('Raporda yayımlanan göstergeler','Metrics published in the report'),note(t('Tarihli rapor değerleridir; canlı kotasyon veya gerçekleşmiş getiri değildir.','Dated report values, not live quotes or realised returns.'))+tabular(headers,selected.map(([a,b,c,d])=>[esc(a),esc(b),esc(c),href(d,'PDF')]),selected));
  exportRows=[['metric','value','currency','status','report_date','source'],...selected.map(([label,,date,url,value,currency,status])=>[label,value,currency,status,date,new URL(url,location.href).href])];
- if(home){localBistChart();return;}
+ if(home){
+  const widget=$('#market-frame');
+  widget.querySelector('.tradingview-widget-container__widget').style.height='100%';
+  const embed=document.createElement('script');
+  embed.src='https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
+  embed.async=true;embed.textContent=JSON.stringify({...cfg,hide_volume:true});
+  widget.append(embed);
+  localBistChart();return;
+ }
  if(prev&&selectedFrame===frame){$('#market-frame').append(prev)}else{const f=document.createElement('iframe');f.className='lab-frame';f.title=t('Hisse fiyat grafiği','Stock price chart');f.src=frame;$('#market-frame').append(f);selectedFrame=frame;}
 }
 function financialView(all,data){
