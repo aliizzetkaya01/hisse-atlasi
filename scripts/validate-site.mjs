@@ -25,7 +25,8 @@ assert(!/Portföy|Portfoy/i.test(JSON.stringify(catalog)),'Personal portfolio me
 for(const [,url]of html.matchAll(/(?:src|href)="([^"]+)"/g)){
  if(url.startsWith('#')||/^https?:/.test(url))continue;
  assert(!url.startsWith('/'),'Root-relative link breaks project Pages');
- assert(fs.existsSync(path.join(root,url)),'Missing asset: '+url);
+ const asset=url.split(/[?#]/,1)[0];
+ assert(fs.existsSync(path.join(root,asset)),'Missing asset: '+url);
 }
 const js=fs.readFileSync(path.join(root,'app.js'),'utf8');
 assert(js.includes("fetch('catalog.json')"),'Catalog must be relative');
