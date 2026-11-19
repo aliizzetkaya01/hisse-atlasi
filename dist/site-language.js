@@ -4,7 +4,7 @@ export function localizeDocument(){
  const lang=getLanguage();document.documentElement.lang=lang;
  const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;
  while(n=walker.nextNode()){
-  if(n.parentElement?.closest('script,style,iframe,[data-original-source]'))continue;
+  if(n.parentElement?.closest('script,style,iframe,.brand,[data-original-source]'))continue;
   if(!texts.has(n))texts.set(n,n.textContent);n.textContent=translate(texts.get(n),lang);
  }
  for(const el of document.querySelectorAll('[aria-label],[placeholder]')){
