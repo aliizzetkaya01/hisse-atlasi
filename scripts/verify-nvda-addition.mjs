@@ -2,7 +2,9 @@ import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
-const old=p=>JSON.parse(execFileSync('git',['show','HEAD:'+p],{encoding:'utf8',maxBuffer:12000000}));
+// Keep the comparison reproducible after committing the new archive.
+const baseline='e3f59adca0d755a0ebd01c877104ff5c407c9e6d';
+const old=p=>JSON.parse(execFileSync('git',['show',baseline+':'+p],{encoding:'utf8',maxBuffer:12000000}));
 const current=p=>JSON.parse(fs.readFileSync(p,'utf8'));
 const before=old('dist/catalog.json'),after=current('dist/catalog.json');
 assert.equal(after.reports.length,before.reports.length+1);
