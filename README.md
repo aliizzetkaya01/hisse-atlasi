@@ -14,6 +14,23 @@ JSON/CSV indirme ve en fazla beş raporun kapak göstergelerini karşılaştırm
 10.323 otomatik tablo-adayı satır, denetlenmiş/normalize edilmiş mali seri değildir.
 Resim grafikler sayısallaştırılmamıştır. Eksik veya kurulamadı alanlar null tutulur.
 Fiyat ve hedefler tarihlidir; hedef/spot farkı gerçekleşmiş getiri değildir.
+
+## Grafikler ve DXY
+
+Veri laboratuvarındaki Grafikler ve DXY alanı seçilen hisseyi TradingView'in
+ücretsiz gömülü grafiğinde TVC:DXY ile karşılaştırır. Piyasa serileri sitede
+yeniden dağıtılmaz; JSON/CSV arşiv ihracına dahil değildir. Sağlayıcının gecikme,
+sembol kapsamı ve kullanım şartları geçerlidir. Fiyat karşılaştırması yüzde
+ölçeğindedir; arşiv fiyatlarıyla aynı veri kesimi değildir.
+
+NVDA, SITM, OLED, MXL, CEVA, TSEM, ALGM, KLIC, COHU ve UCTT'nin eşleşen
+raporlarında yıllık gerçekleşen mali seriler bulunur. Kaynak birimi,
+başlangıç=100 ve ilk döneme göre değişim görünümleri; mali yıl filtreleri,
+PDF sayfa bağlantıları ve seçili veri indirme desteklenir. Sıfır/negatif
+seriler endekslenmez; N/M gözlemler boşluk olarak korunur. DXY ayrı panelde
+incelenebilir; mali yıllarla eşleştirilmiş korelasyon hesabı yapılmaz.
+Diğer raporların kapak göstergeleri çizilebilir, ham tablo adayları ise
+doğrulanmış mali seri gibi sunulmaz. Eski PDF'ler değişmemiştir.
 İlk otomatik yayın eksik PDF'leri mevcut herkese açık arşivden indirir, her birinin
 SHA-256 değerini katalogla karşılaştırır ve bu depoya kaydeder. Sonraki yayınlar
 PDF'ler depoda bulunduğu sürece önceki yayın alanına bağımlı değildir.
